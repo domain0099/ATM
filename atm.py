@@ -14,11 +14,13 @@ while True :
     if num == '4' :  
         break
     if num == "1" :
-        deposit_amount = int(input("입금할 금액을 입력해주세요 : ")) # input() : 내장함수 / int : 정수형 데이터로 형변환 해주는 내장함수
-        balance = balance + deposit_amount
-        receipts.append(("입금", deposit_amount, balance))
-        print(f'입금하신 금액은 {deposit_amount}원 이고, 현재 잔액은 {balance}입니다')
-    
+        deposit_amount = input("입금할 금액을 입력해주세요 : ") # input() : 내장함수 / int : 정수형 데이터로 형변환 해주는 내장함수
+        if deposit_amount.isdigit() and int(deposit_amount) > 0 :
+            balance = balance + int(deposit_amount)
+            receipts.append(("입금", deposit_amount, balance))
+            print(f'입금하신 금액은 {deposit_amount}원 이고, 현재 잔액은 {balance}입니다')
+        else :
+            print('입금한 금액을 숫자 형태와 음수가 아닌값을 입력해 주세요')
     if num == "2" :
         withdraw_amount = int(input("출금할 금액을 입력해 주세요 : "))
         withdraw_amount = min(balance, withdraw_amount)
