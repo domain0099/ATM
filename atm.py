@@ -3,8 +3,6 @@
 # while문을 이용해서 입금, 출금, 영수증 보기, 종료라는 버튼이 누르기 전까지 계속해서 노출해 주세요
 # 종료를 누르면 서비스를 종료한다는 메세지를 출력하고 현재 잔액을 보여주세요
 
-balance = 3000
-
 receipts = [] #[]대괄호는 list / {}중괄호는 dict / ()소괄호는 tuple
 balance = 3000 #현재 잔액을 보여주세요
 
@@ -27,5 +25,13 @@ while True :
         balance -= withdraw_amount
         receipts.append(("출금", withdraw_amount, balance))
         print(f'출금하신 금액은 {withdraw_amount}원 이고, 현재 잔액은 {balance}원 입니다')
-
+    if num == "3" :
+        if receipts :      
+            print("===영수증===")
+            for i in receipts :
+                print(f'{i[0]}:{i[1]}원 | 잔액 : {i[2]}원')
+            
+        else : 
+            print("영수증 내용이 없습니다.")
 print(f'서비스를 종료합니다. 현재 잔액은 {balance}입니다.')
+    
